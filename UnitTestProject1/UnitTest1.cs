@@ -28,15 +28,18 @@ namespace UnitTestProject1
             string text2 = input2.GetAttribute("value");
             if(text == text2)
             {
-                Console.WriteLine($"Success! {text}, {text2}");
-
+                input2.Clear();
+                input2.SendKeys($"Succccess! {text}, {text2}");
             }
             else
             {
-                Console.WriteLine($"{text}, {text2}");
+                input2.Clear();
+                input2.SendKeys($"{text}, {text2}");
             }
-            Console.WriteLine($"Succccess! {text}, {text2}");
+            
             Console.ReadKey();
+
+            driver.Quit();
 
 
 
