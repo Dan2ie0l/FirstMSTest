@@ -6,15 +6,16 @@ using System;
 namespace UnitTestProject1
 {
     [TestClass]
-    public class UnitTest1
+    public class MyFirstUnitTest
     {
-       
+        string url = "https://duckduckgo.com/";
+        string text = "selenium";
+        IWebDriver driver = new ChromeDriver();
+
         [TestMethod]
-        public void TestMethod1()
+        public void AreTextsSame()
         {
-            string url = "https://duckduckgo.com/";
-            string text = "selenium";
-            IWebDriver driver = new ChromeDriver();
+            
             driver.Navigate().GoToUrl(url);
            
             IWebElement button = driver.FindElement(By.Id("search_button_homepage"));
@@ -26,25 +27,15 @@ namespace UnitTestProject1
 
             IWebElement input2 = driver.FindElement(By.Id("search_form_input"));
             string text2 = input2.GetAttribute("value");
-            if(text == text2)
-            {
-                input2.Clear();
-                input2.SendKeys($"Succccess! {text}, {text2}");
-            }
-            else
-            {
-                input2.Clear();
-                input2.SendKeys($"{text}, {text2}");
-            }
+            Assert.AreEqual(text, text2);
             
-            Console.ReadKey();
+
+        }
+        [TestCleanup]
+        public void CleanUp()
+        {
 
             driver.Quit();
-
-
-
-
-
 
         }
     }
