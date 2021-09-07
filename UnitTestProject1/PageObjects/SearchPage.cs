@@ -9,11 +9,11 @@ using SeleniumExtras.PageObjects;
 
 namespace UnitTestProject1
 {
-  
+
     class SearchPage
     {
         IWebDriver driver;
-    
+
         public void Comparing(string text)
         {
             IWebElement input2 = driver.FindElement(By.Id("search_form_input"));

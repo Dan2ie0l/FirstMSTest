@@ -6,14 +6,14 @@ using SeleniumExtras.PageObjects;
 
 namespace UnitTestProject1
 {
-  
+
     [TestClass]
     public class TestClass
     {
         public string text = "selenium";
         private IWebDriver driver;
 
-       
+
         [TestMethod]
         public void AreTextsSame()
         {
@@ -22,7 +22,7 @@ namespace UnitTestProject1
             SearchPage search = new SearchPage(driver);
             home.SearchingSomething(text);
             search.Comparing(text);
-           
+
         }
         [TestCleanup]
         public void CleanUp()

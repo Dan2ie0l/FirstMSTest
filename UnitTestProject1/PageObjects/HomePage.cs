@@ -6,7 +6,7 @@ using SeleniumExtras.PageObjects;
 
 namespace UnitTestProject1
 {
-    
+
     public class HomePage
     {
         string url = "https://duckduckgo.com/";
@@ -15,17 +15,17 @@ namespace UnitTestProject1
 
         public HomePage(IWebDriver driver)
         {
-            
+
             this.driver = driver;
             PageFactory.InitElements(driver, this);
         }
 
-        
+
         public void SearchingSomething(string text)
         {
-            
+
             driver.Navigate().GoToUrl(url);
-           
+
             IWebElement button = driver.FindElement(By.Id("search_button_homepage"));
             IWebElement input = driver.FindElement(By.Id("search_form_input_homepage"));
 
