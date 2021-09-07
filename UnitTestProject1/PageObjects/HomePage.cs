@@ -2,18 +2,26 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
+using SeleniumExtras.PageObjects;
 
 namespace UnitTestProject1
 {
-    [TestClass]
-    public class MyFirstUnitTest
+    
+    public class HomePage
     {
         string url = "https://duckduckgo.com/";
-        string text = "selenium";
-        IWebDriver driver = new ChromeDriver();
+        IWebDriver driver;
 
-        [TestMethod]
-        public void AreTextsSame()
+
+        public HomePage(IWebDriver driver)
+        {
+            
+            this.driver = driver;
+            PageFactory.InitElements(driver, this);
+        }
+
+        
+        public void SearchingSomething(string text)
         {
             
             driver.Navigate().GoToUrl(url);
@@ -21,14 +29,8 @@ namespace UnitTestProject1
             IWebElement button = driver.FindElement(By.Id("search_button_homepage"));
             IWebElement input = driver.FindElement(By.Id("search_form_input_homepage"));
 
-            
             input.SendKeys(text);
             button.Click();
-
-            IWebElement input2 = driver.FindElement(By.Id("search_form_input"));
-            string text2 = input2.GetAttribute("value");
-            Assert.AreEqual(text, text2);
-            
 
         }
         [TestCleanup]
